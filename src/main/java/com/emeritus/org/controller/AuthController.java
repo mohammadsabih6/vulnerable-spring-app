@@ -13,13 +13,17 @@ import com.emeritus.org.payload.response.JwtResponse;
 import com.emeritus.org.payload.response.MessageResponse;
 import com.emeritus.org.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -89,4 +93,19 @@ public class AuthController {
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
+
+    // @PostMapping("/signin")
+    // public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest, BindingResult bindingResult) {
+    // if (bindingResult.hasErrors()) {
+    //     // Handle validation errors
+    //     List<ObjectError> errors = bindingResult.getAllErrors();
+    //     List<String> errorMessages = errors.stream()
+    //             .map(DefaultMessageSourceResolvable::getDefaultMessage)
+    //             .collect(Collectors.toList());
+    //     return ResponseEntity
+    //             .badRequest()
+    //             .body(new MessageResponse("Validation errors: " + errorMessages));
+    // }
+    // return null;
+    // }
 }
